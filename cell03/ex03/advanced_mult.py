@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 multiplier = 0
 
 while multiplier <= 10:
