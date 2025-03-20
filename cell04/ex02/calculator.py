@@ -11,4 +11,4 @@ try:
 
 except ZeroDivisionError:
     print(f"{num1} / {num2} = Undefined") # / 0 is not allowed & fix ZeroDivisionError error
-    print(f"{num1} x {num2} = {num1 * num2}") # add ts again to keep running till the end ts pmo :broken_heart:6
+    print(f"{num1} x {num2} = {num1 * num2}") # add ts again to keep running till the end ts pmo :broken_heart:
