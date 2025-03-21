@@ -18,17 +18,17 @@ def is_valid_board(board):
 def is_in_check(board, king_row, king_col):
     """Check if the King is in check by any piece."""
     
-    # Check for Pawn attacks (only one step downward diagonally)
-    for dr, dc in [(-1, -1), (-1, 1),(1, -1), (1, 1)]:  #  downward forward diagonals
+    # Check for Pawn attacks (only one step forward diagonally)
+    for dr, dc in [(1, -1), (1, 1)]:  #   forward diagonals
         r, c = king_row + dr, king_col + dc
         if 0 <= r < len(board) and 0 <= c < len(board[0]) and board[r][c] == 'P':
             return True  # King is in check by a Pawn
-    
+
     # Define movement rules for other pieces
     directions = {
         'B': [(-1, -1), (-1, 1), (1, -1), (1, 1)],  # Bishop moves diagonally
         'R': [(-1, 0), (1, 0), (0, -1), (0, 1)],  # Rook moves straight
-        'Q': [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]  # Queen moves diagonally and straight
+        'Q': [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]  # Queen moves both diagonally and straight
     }
 
     # Check for Bishop, Rook, and Queen
@@ -53,8 +53,8 @@ def checkmate(board):
     if not is_valid:
         print(f"Error: Invalid character '{invalid_char}' found on board.")
         return
-
-    playable_pieces = {'P', 'B', 'R', 'Q'}
+    
+    #playable_pieces = {'P', 'B', 'R', 'Q'} 
     # Check if there any player piece (P B R Q) & separate the wall & floor
     # player_visible = any(any(piece in row for piece in playable_pieces) for row in board)
     # Count the number of Kings on the board
@@ -68,7 +68,6 @@ def checkmate(board):
     elif king_count == 0:
         print("Error: No King on the board.")
         return
-
 
     # Check if the King is in check
     king_row, king_col = find_king(board)
